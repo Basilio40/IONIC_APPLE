@@ -15,19 +15,23 @@
   padding-top: 30px;
 }
 
-ion-list {
-  margin-bottom: 0;
-  --background: transparent;
-}
 .list-md{
   background: transparent !important;
 }
+
+.list-ios{
+  background: transparent !important;
+}
+
 .item {
-  --background:transparent;
   color: #000;
 }
 
 .shadow{
-  color: #0c0c0dcc;
+  color: #0C0C0D;
   border-bottom: solid 5px;
+}
+
+ion-content{
+  --background: url('./../../assets/img/visaoglobal3.jpg') no-repeat center/cover fixed;
 }

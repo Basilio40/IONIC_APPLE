@@ -1,9 +1,9 @@
+import { ApiLoginService } from './../services/api-service/api-login.service';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonList, Config } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { ApiLoginService } from '../../api-login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-speaker-list',
@@ -20,18 +20,18 @@ export class SpeakerListPage implements OnInit {
   segment = 'all';
   excludeTracks: any = [];
   shownSessions: any = [];
+  showSearchbar: boolean;
   groups: any = [];
   confDate: string;
-  showSearchbar: boolean;
   imoveis: any = [];
 
   constructor(
-    public router: Router,
-    public config: Config,
-    private storage: Storage,
+    public loginService: ApiLoginService,
     private iab: InAppBrowser,
-    public loginService: ApiLoginService
-  ) { 
+    private storage: Storage,
+    public router: Router,
+    public config: Config
+  ){
     loginService.loginEmitter$.subscribe(login => {
       console.log("AVISOU", login)
       login ? this.updateImoveis() : this.onLogout()
@@ -39,7 +39,6 @@ export class SpeakerListPage implements OnInit {
   }
 
   ngOnInit() {
-
     this.ios = this.config.get('mode') === 'ios';
   }
 
@@ -55,7 +54,7 @@ export class SpeakerListPage implements OnInit {
     this.imoveis = [];
     this.storage.get('user').then((dados) => {
       console.log("Dados do storage", dados)
-      this.imoveis = JSON.parse(dados)['data']['imoveis']
+      this.imoveis = dados['data']['imoveis']
       console.log(this.imoveis)
     })
   }

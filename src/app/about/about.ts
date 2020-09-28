@@ -1,10 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
-
-import { PopoverController, IonList, Config } from '@ionic/angular';
-
-import { PopoverPage } from '../about-popover/about-popover';
-import { Router } from '@angular/router';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { Component, ViewChild } from '@angular/core';
+import { IonList, Config } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -47,7 +44,7 @@ export class AboutPage {
     this.imoveis = [];
     this.storage.get('user').then((dados) => {
       console.log("Dados do storage", dados)
-      this.imoveis = JSON.parse(dados)['data']['imoveis']
+      this.imoveis = dados['data']['imoveis']
       console.log(this.imoveis)
     })
   }

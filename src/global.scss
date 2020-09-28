@@ -24,3 +24,15 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.custom-loader-class{
+    opacity: 0.8;
+    color: #BB4040;
+    --background:#0A0A0A;
+    --spinner-color:#BB4040;
+    border-radius: 12px;
+}
+
+.small{
+    font-size: 12px;
+}
